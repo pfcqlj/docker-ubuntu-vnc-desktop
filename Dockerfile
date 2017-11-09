@@ -15,7 +15,7 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends --allow-unauthenticated \
         supervisor \
         openssh-server pwgen sudo vim-tiny \
-        net-tools \
+        net-tools iputils-ping traceroute dnsutils \
         lxde x11vnc xvfb \
         gtk2-engines-murrine ttf-ubuntu-font-family \
         libreoffice firefox \
@@ -39,6 +39,11 @@ RUN chmod +x /bin/tini
 ADD image /
 RUN pip install setuptools wheel && pip install -r /usr/lib/web/requirements.txt
 
+RUN mkdir -p /config /documents
+VOLUME ["/config"]
+VOLUME ["documents"]
+
+EXPOSE 5900
 EXPOSE 80
 WORKDIR /root
 ENV HOME=/home/ubuntu \
