@@ -14,7 +14,7 @@ RUN apt-get update \
     && apt-get update \
     && apt-get install -y --no-install-recommends --allow-unauthenticated \
         supervisor \
-        openssh-server pwgen sudo vim-tiny \
+        openssh-server pwgen sudo vim-tiny nano \
         net-tools iputils-ping traceroute dnsutils \
         lxde x11vnc xvfb \
         gtk2-engines-murrine ttf-ubuntu-font-family \
@@ -39,13 +39,16 @@ RUN chmod +x /bin/tini
 ADD image /
 RUN pip install setuptools wheel && pip install -r /usr/lib/web/requirements.txt
 
-RUN mkdir -p /config /documents
+RUN sed -i 's/\/root/\/config/g' /etc/passwd && \
+    sed -i 's/\/root/\/config/g' /etc/passwd-
+
+RUN mkdir -p /documents
 VOLUME ["/config"]
 VOLUME ["documents"]
 
 EXPOSE 5900
 EXPOSE 80
-WORKDIR /root
+WORKDIR /config
 ENV HOME=/home/ubuntu \
     SHELL=/bin/bash
 ENTRYPOINT ["/startup.sh"]
