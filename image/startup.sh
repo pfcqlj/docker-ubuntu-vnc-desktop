@@ -2,8 +2,7 @@
 
 mkdir -p /var/run/sshd
 
-cp -rn /root/* /config
-cp -rn /root/.* /config
+cp -rn /root/. /config
 chown -R root:root /config
 
 mkdir -p /config/.config/pcmanfm/LXDE/
