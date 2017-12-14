@@ -1,12 +1,13 @@
 #!/bin/bash
 
-mkdir -p /var/run/sshd
-
-cp -rn /root/. /config
-chown -R root:root /config
-
-mkdir -p /config/.config/pcmanfm/LXDE/
-cp -n /usr/share/doro-lxde-wallpapers/desktop-items-0.conf /config/.config/pcmanfm/LXDE/
+getent passwd ubuntu > /dev/null
+if [ $? -eq 2 ]; then
+    useradd -d /config -s /bin/bash -U -G adm,sudo ubuntu
+    echo "ubuntu:PASSWORD" | chpasswd
+    mkdir -p /config/.config/pcmanfm/LXDE/
+    cp -n /usr/share/doro-lxde-wallpapers/desktop-items-0.conf /config/.config/pcmanfm/LXDE/
+fi
+chown -R ubuntu:ubuntu /config
 
 if [ -n "$VNC_PASSWORD" ]; then
     echo -n "$VNC_PASSWORD" > /.password1
@@ -16,6 +17,4 @@ if [ -n "$VNC_PASSWORD" ]; then
     export VNC_PASSWORD=
 fi
 
-cd /usr/lib/web && ./run.py > /var/log/web.log 2>&1 &
-nginx -c /etc/nginx/nginx.conf
 exec /bin/tini -- /usr/bin/supervisord -n
