@@ -1,5 +1,5 @@
 FROM ubuntu:16.04
-MAINTAINER Doro Wu <fcwu.tw@gmail.com>
+MAINTAINER Jason Bean <taddeusz@gmail.com>
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV TINI_VERSION v0.16.1
