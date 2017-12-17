@@ -5,7 +5,9 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV TINI_VERSION v0.16.1
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /bin/tini
 
-RUN apt-get update \ 
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends locales \
+    && locale-gen en_US.UTF-8 \
     && apt-get install -y --no-install-recommends software-properties-common curl wget apt-transport-https \
     && curl -SL https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
     && sh -c 'echo "deb https://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' \
@@ -14,7 +16,7 @@ RUN apt-get update \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
         supervisor \
-        pwgen sudo vim-tiny nano zip unzip \
+        zsh pwgen sudo vim-tiny nano zip unzip \
         net-tools iputils-ping traceroute dnsutils telnet ssh \
         lxde x11vnc xrdp xvfb \
         gtk2-engines-murrine ttf-ubuntu-font-family \
@@ -32,10 +34,14 @@ RUN apt-get update \
     && sed -i 's/\bgoogle-chrome-stable\b/& --no-sandbox/' /usr/share/applications/google-chrome.desktop \
     && mkdir -p /documents
 
+ENV LANG en_US.UTF-8  
+ENV LANGUAGE en_US:en  
+ENV LC_ALL en_US.UTF-8
+
 ADD image /
 ADD default.pa /etc/pulse/default.pa
 
-ENV VSCODE_VERSION=v1.18.1
+ENV VSCODE_VERSION=v1.19.0
 RUN wget -O vscode-amd64.deb  https://go.microsoft.com/fwlink/?LinkID=760868 \
     && dpkg -i vscode-amd64.deb \
     && rm vscode-amd64.deb
@@ -55,6 +61,6 @@ EXPOSE 3389
 EXPOSE 5900
 EXPOSE 4713
 WORKDIR /config
-ENV HOME=/home/ubuntu \
-    SHELL=/bin/bash
+ENV HOME=/config \
+    SHELL=/usr/bin/zsh
 ENTRYPOINT ["/startup.sh"]

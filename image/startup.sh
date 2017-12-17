@@ -2,7 +2,7 @@
 
 getent passwd ubuntu > /dev/null
 if [ $? -eq 2 ]; then
-    useradd -d /config -s /bin/bash -U -G adm,sudo ubuntu
+    useradd -d /config -s /usr/bin/zsh -U -G adm,sudo ubuntu
     echo "ubuntu:PASSWORD" | chpasswd
     mkdir -p /config/.config/pcmanfm/LXDE/
     cp -n /usr/share/doro-lxde-wallpapers/desktop-items-0.conf /config/.config/pcmanfm/LXDE/
