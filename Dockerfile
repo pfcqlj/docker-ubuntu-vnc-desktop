@@ -42,7 +42,7 @@ ENV LC_ALL en_US.UTF-8
 ADD image /
 ADD default.pa /etc/pulse/default.pa
 
-ENV VSCODE_VERSION=v1.19.0
+ENV VSCODE_VERSION=v1.19.1
 RUN wget -O vscode-amd64.deb  https://go.microsoft.com/fwlink/?LinkID=760868 \
     && dpkg -i vscode-amd64.deb \
     && rm vscode-amd64.deb
