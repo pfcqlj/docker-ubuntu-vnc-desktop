@@ -42,13 +42,13 @@ ENV LC_ALL en_US.UTF-8
 ADD image /
 ADD default.pa /etc/pulse/default.pa
 
-ENV VSCODE_VERSION=v1.19.1
+ENV VSCODE_VERSION=v1.19.2
 RUN wget -O vscode-amd64.deb  https://go.microsoft.com/fwlink/?LinkID=760868 \
     && dpkg -i vscode-amd64.deb \
     && rm vscode-amd64.deb
 
-ENV SAGE_BUILD=581
 ENV SAGE_VERSION=9.1.7
+ENV SAGE_BUILD=581
 RUN wget -O sagetv-client.deb https://bintray.com/opensagetv/sagetv/download_file?file_path=sagetv%2F${SAGE_VERSION}.${SAGE_BUILD}%2Fsagetv-client_${SAGE_VERSION}_amd64.deb \
     && dpkg -i sagetv-client.deb \
     && rm sagetv-client.deb
