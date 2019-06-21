@@ -35,8 +35,8 @@ RUN apt-get update \
     && mkdir -p /documents
 
 
-ENV CHROME_VERSION 64.0.3282.140-1
-RUN apt-get install -y --no-install-recommends google-chrome-stable=${CHROME_VERSION} \
+
+RUN apt-get install -y --no-install-recommends google-chrome-stable \
     && sed -i 's/\bgoogle-chrome-stable\b/& --no-sandbox/' /usr/share/applications/google-chrome.desktop
 
 ENV LANG en_US.UTF-8  
