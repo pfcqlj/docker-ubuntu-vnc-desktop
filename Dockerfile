@@ -1,5 +1,5 @@
-FROM ubuntu:17.10
-MAINTAINER Jason Bean <taddeusz@gmail.com>
+FROM nvidia/cuda:9.0-cudnn7-devel     
+MAINTAINER pfcqlj <pfcqlj@gmail.com>
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV TINI_VERSION v0.16.1
@@ -60,7 +60,7 @@ RUN wget -O sagetv-client.deb https://bintray.com/opensagetv/sagetv/download_fil
     && rm sagetv-client.deb
 ADD sageclient.sh /opt/sagetv/client/sageclient.sh
 RUN chmod +x /opt/sagetv/client/sageclient.sh
-
+RUN chmod +x /startup.sh
 VOLUME ["/config"]
 VOLUME ["/documents"]
 
