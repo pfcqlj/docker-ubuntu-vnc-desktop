@@ -34,8 +34,6 @@ RUN apt-get update \
     && apt-get autoremove \
     && mkdir -p /documents
 
-ENV SUBLIME_VERSION 3143
-RUN apt-get install -y --no-install-recommends sublime-text=${SUBLIME_VERSION}
 
 ENV CHROME_VERSION 64.0.3282.140-1
 RUN apt-get install -y --no-install-recommends google-chrome-stable=${CHROME_VERSION} \
