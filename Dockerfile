@@ -1,4 +1,5 @@
-FROM desktop:matlab
+FROM dorowu/ubuntu-desktop-lxde-vnc:latest
+
 LABEL maintainer "pfcqlj  <pfcqlj@gmail.com>"
 
 RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates apt-transport-https gnupg-curl && \
