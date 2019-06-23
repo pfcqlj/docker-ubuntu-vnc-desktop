@@ -17,7 +17,7 @@ docker run -it --rm -p 6080:80 jasonbean/docker-ubuntu-vnc-desktop
 
 Browse http://127.0.0.1:6080/
 
-<img src="https://raw.github.com/fcwu/docker-ubuntu-vnc-desktop/master/screenshots/lxde.png?v1" width=700/>
+<img src="https://github.com/pfcqlj/docker-ubuntu-vnc-desktop/blob/master/image/show.png?v1" width=700/>
 
 
 Connect with VNC Viewer and protect by VNC Password
