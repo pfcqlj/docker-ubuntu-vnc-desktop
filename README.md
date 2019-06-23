@@ -4,7 +4,7 @@ docker-ubuntu-vnc-desktop(it can support GPU)
 [![Docker Pulls](https://img.shields.io/docker/pulls/jasonbean/docker-ubuntu-vnc-desktop.svg)](https://hub.docker.com/r/jasonbean/docker-ubuntu-vnc-desktop/)
 [![Docker Stars](https://img.shields.io/docker/stars/jasonbean/docker-ubuntu-vnc-desktop.svg)](https://hub.docker.com/r/jasonbean/docker-ubuntu-vnc-desktop/)
 
-Docker image to provide HTML5 VNC interface to access Ubuntu 16.04 LXDE desktop environment.
+Docker image to provide HTML5 VNC interface to access Ubuntu 16.04 xfce desktop environment.
 
 *Pull the image*
 -------------------------
